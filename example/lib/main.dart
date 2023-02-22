@@ -293,13 +293,12 @@ class _DevicesListScreenState extends State<DevicesListScreen> {
       devInfo = iosInfo.localizedModel;
     }
     await nearbyService.init(
-        serviceType: 'mpconn',
+        serviceType: 'dartobservatory',
         deviceName: devInfo,
         strategy: Strategy.P2P_CLUSTER,
         callback: (isRunning) async {
           if (isRunning) {
             if (widget.deviceType == DeviceType.browser) {
-
               await nearbyService.stopBrowsingForPeers();
               await Future.delayed(Duration(microseconds: 200));
               await nearbyService.startBrowsingForPeers();
